@@ -9,5 +9,14 @@ const initialState = {
 const productSlice = createSlice({
   name: "product",
   initialState,
-  
+  extraReducers: (builder) => {
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.products = action.payload
+    })
+    builder.addCase(fetchProduct.fulfilled, (state, action) => {
+      state.product = action.payload
+    })
+  }
 })
+
+export default productSlice.reducer
